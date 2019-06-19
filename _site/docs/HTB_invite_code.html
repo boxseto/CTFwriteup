@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=78ac5e7d898420afd80a7b990f28301437458684">
+
+<!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Hack The Box | Slate theme</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Hack The Box" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Slate is a theme for GitHub Pages." />
+<meta property="og:description" content="Slate is a theme for GitHub Pages." />
+<link rel="canonical" href="http://localhost:4000/docs/HTB_invite_code.html" />
+<meta property="og:url" content="http://localhost:4000/docs/HTB_invite_code.html" />
+<meta property="og:site_name" content="Slate theme" />
+<script type="application/ld+json">
+{"description":"Slate is a theme for GitHub Pages.","@type":"WebPage","url":"http://localhost:4000/docs/HTB_invite_code.html","headline":"Hack The Box","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <a id="forkme_banner" href="https://github.com/boxseto/CTFwriteup">View on GitHub</a>
+          
+
+          <h1 id="project_title">Slate theme</h1>
+          <h2 id="project_tagline">Slate is a theme for GitHub Pages.</h2>
+
+          
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/boxseto/CTFwriteup/zipball/gh-pages">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/boxseto/CTFwriteup/tarball/gh-pages">Download this project as a tar.gz file</a>
+            </section>
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1 id="hack-the-box">Hack The Box</h1>
+<h2 id="invite-code">Invite Code</h2>
+
+<h3 id="introduction">Introduction</h3>
+<p><a href="www.hackthebox.eu">Hack the box</a> is a fun site for practice pen-testing. One feature is that although it is totally free (of coz you can spend money for more “box”), but there are no “registration portal” for an account. Instead, you have to <strong>hack</strong> the invite code to get yourself an account.</p>
+
+<h3 id="steps">Steps</h3>
+<ol>
+  <li>Go to <a href="www.hackthebox.eu/invite">www.hackthebox.eu</a>, and through the button you will find a portal for invite code.
+ <img src="/docs/images/HTB/invite_code/img1.png" alt="invite code portal" /></li>
+  <li>There are not much content on the site, no place to poke around with. Let’s open firebug to see the content.
+ <img src="/docs/images/HTB/invite_code/img2.png" alt="Firebug" /></li>
+  <li>
+    <p>After searching, there is a “/js/inviteapi.min.js” comes with the site seems to be related to the invite code.</p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="kr">eval</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">p</span><span class="p">,</span><span class="nx">a</span><span class="p">,</span><span class="nx">c</span><span class="p">,</span><span class="nx">k</span><span class="p">,</span><span class="nx">e</span><span class="p">,</span><span class="nx">d</span><span class="p">){</span><span class="nx">e</span><span class="o">=</span><span class="kd">function</span><span class="p">(</span><span class="nx">c</span><span class="p">){</span><span class="k">return</span> <span class="nx">c</span><span class="p">.</span><span class="nx">toString</span><span class="p">(</span><span class="mi">36</span><span class="p">)};</span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="s1">''</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/^/</span><span class="p">,</span><span class="nb">String</span><span class="p">)){</span><span class="k">while</span><span class="p">(</span><span class="nx">c</span><span class="o">--</span><span class="p">){</span><span class="nx">d</span><span class="p">[</span><span class="nx">c</span><span class="p">.</span><span class="nx">toString</span><span class="p">(</span><span class="nx">a</span><span class="p">)]</span><span class="o">=</span><span class="nx">k</span><span class="p">[</span><span class="nx">c</span><span class="p">]</span><span class="o">||</span><span class="nx">c</span><span class="p">.</span><span class="nx">toString</span><span class="p">(</span><span class="nx">a</span><span class="p">)}</span><span class="nx">k</span><span class="o">=</span><span class="p">[</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">){</span><span class="k">return</span> <span class="nx">d</span><span class="p">[</span><span class="nx">e</span><span class="p">]}];</span><span class="nx">e</span><span class="o">=</span><span class="kd">function</span><span class="p">(){</span><span class="k">return</span><span class="s1">'</span><span class="err">\\</span><span class="s1">w+'</span><span class="p">};</span><span class="nx">c</span><span class="o">=</span><span class="mi">1</span><span class="p">};</span><span class="k">while</span><span class="p">(</span><span class="nx">c</span><span class="o">--</span><span class="p">){</span><span class="k">if</span><span class="p">(</span><span class="nx">k</span><span class="p">[</span><span class="nx">c</span><span class="p">]){</span><span class="nx">p</span><span class="o">=</span><span class="nx">p</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="k">new</span> <span class="nb">RegExp</span><span class="p">(</span><span class="s1">'</span><span class="err">\\</span><span class="s1">b'</span><span class="o">+</span><span class="nx">e</span><span class="p">(</span><span class="nx">c</span><span class="p">)</span><span class="o">+</span><span class="s1">'</span><span class="err">\\</span><span class="s1">b'</span><span class="p">,</span><span class="s1">'g'</span><span class="p">),</span><span class="nx">k</span><span class="p">[</span><span class="nx">c</span><span class="p">])}}</span><span class="k">return</span> <span class="nx">p</span><span class="p">}(</span><span class="s1">'1 i(4){h 8={"4":4};$.9({a:"7",5:"6",g:8,b:</span><span class="se">\'</span><span class="s1">/d/e/n</span><span class="se">\'</span><span class="s1">,c:1(0){3.2(0)},f:1(0){3.2(0)}})}1
+j(){$.9({a:"7",5:"6",b:</span><span class="se">\'</span><span class="s1">/d/e/k/l/m</span><span class="se">\'</span><span class="s1">,c:1(0){3.2(0)},f:1(0){3.2(0)}})}'</span><span class="p">,</span><span class="mi">24</span><span class="p">,</span><span class="mi">24</span><span class="p">,</span><span class="s1">'response|function|log|console|code|dataType|json|POST|formData|ajax|type|url|success|api|invite|error|data|var|verifyInviteCode|makeInviteCode|how|to|generate|verify'</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">'|'</span><span class="p">),</span><span class="mi">0</span><span class="p">,{}))</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>As the code is in .min.js, it is very ugly code to be read. so lets beautify it</p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="kd">function</span> <span class="nx">verifyInviteCode</span><span class="p">(</span><span class="nx">code</span><span class="p">)</span> <span class="p">{</span>
+   <span class="kd">var</span> <span class="nx">formData</span> <span class="o">=</span> <span class="p">{</span>
+     <span class="s2">"code"</span><span class="p">:</span> <span class="nx">code</span>
+   <span class="p">};</span>
+   <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+     <span class="na">type</span><span class="p">:</span> <span class="s2">"POST"</span><span class="p">,</span>
+     <span class="na">dataType</span><span class="p">:</span> <span class="s2">"json"</span><span class="p">,</span>
+     <span class="na">data</span><span class="p">:</span> <span class="nx">formData</span><span class="p">,</span>
+     <span class="na">url</span><span class="p">:</span> <span class="s1">'/api/invite/verify'</span><span class="p">,</span>
+     <span class="na">success</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+       <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span>
+     <span class="p">},</span>
+     <span class="na">error</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+       <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span>
+     <span class="p">}</span>
+   <span class="p">})</span>
+ <span class="p">}</span>
+
+ <span class="kd">function</span> <span class="nx">makeInviteCode</span><span class="p">()</span> <span class="p">{</span>
+   <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+     <span class="na">type</span><span class="p">:</span> <span class="s2">"POST"</span><span class="p">,</span>
+     <span class="na">dataType</span><span class="p">:</span> <span class="s2">"json"</span><span class="p">,</span>
+     <span class="na">url</span><span class="p">:</span> <span class="s1">'/api/invite/how/to/generate'</span><span class="p">,</span>
+     <span class="na">success</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+       <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span>
+     <span class="p">},</span>
+     <span class="na">error</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+       <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span>
+     <span class="p">}</span>
+   <span class="p">})</span>
+ <span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>that is much better. we can see there are two function and it is waiting for us to call! and we’ll receieve the following when we make makeInviteCode() in console:</p>
+
+    <blockquote>
+      <p>data: “SW4gb3JkZXIgdG8gZ2VuZXJhdGUgdGhlIGludml0ZSBjb2RlLCBtYWtlIGEgUE9TVCByZXF1ZXN0IHRvIC9hcGkvaW52aXRlL2dlbmVyYXRl”
+enctype: “BASE64”</p>
+    </blockquote>
+  </li>
+  <li>
+    <p>How good they are to be also givin us the encryption method! Although we can judge it by the appearence of [A-Z,a-z,0-9].After Decode:</p>
+
+    <blockquote>
+      <p>In order to generate the invite code, make a POST request to /api/invite/generate</p>
+    </blockquote>
+  </li>
+  <li>
+    <p>Okay, I was thinking that you could give me code directly, but lets modify the ajax in function and make the call again:</p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="kd">function</span> <span class="nx">makeInviteCode</span><span class="p">()</span> <span class="p">{</span>
+   <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+     <span class="na">type</span><span class="p">:</span> <span class="s2">"POST"</span><span class="p">,</span>
+     <span class="na">dataType</span><span class="p">:</span> <span class="s2">"json"</span><span class="p">,</span>
+     <span class="na">url</span><span class="p">:</span> <span class="s1">'/api/invite/generate'</span><span class="p">,</span>
+     <span class="na">success</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+       <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span>
+     <span class="p">},</span>
+     <span class="na">error</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+       <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span>
+     <span class="p">}</span>
+   <span class="p">})</span>
+ <span class="p">}</span>
+</code></pre></div>    </div>
+
+    <blockquote>
+      <p>code: “TEtURUMtSUFYSlEtWVVMV0ItUlRQUVktTFNHUEU=”
+format: “encoded”</p>
+    </blockquote>
+  </li>
+  <li>
+    <p>Okay now that is a cipher text we have to figure out the encoding scheme. One more time, judging by the [A-Z,a-z,0-9] and the [=] padding, we can once again tell it is a Base64 encode.</p>
+
+    <blockquote>
+      <p>LKTEC-IAXJQ-YULWB-RTPQY-LSGPE</p>
+    </blockquote>
+  </li>
+  <li>Now there is our registration panel! Have Fun Hacking!</li>
+</ol>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">Slate theme maintained by <a href="https://github.com/boxseto">boxseto</a></p>
+        
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+  </body>
+</html>
