@@ -10,29 +10,31 @@ The Beginner Quest is basically capturing many flags in many areas. I like the c
 1. The test comes with an attachment, which is an archive file. We can try to unzip it first, and we can see there are 2 files:
     > rand 2
     > log.txt
-1. Let's open the file with format we all knows - log.txt
-    > 0: AC+79 3888{6652492084280_198129318435598}
-    > 1: Pliamas Sos{276116074108949_243544040631356}
-    > 2: Ophiuchus{11230026071572_273089684340955}
-    > 3: Pax Memor -ne4456 Hi Pro{21455190336714_219250247519817}
-    > 4: Camion Gyrin{235962764372832_269519420054142}
+1. Let's open the file with format we all knows - log.txt    
+    > 0: AC+79 3888{6652492084280_198129318435598}    
+    > 1: Pliamas Sos{276116074108949_243544040631356}    
+    > 2: Ophiuchus{11230026071572_273089684340955}    
+    > 3: Pax Memor -ne4456 Hi Pro{21455190336714_219250247519817}    
+    > 4: Camion Gyrin{235962764372832_269519420054142}    
 1. Ok, it seems that it is a file with names of interstellars we never know about. with the coordinate of two integers that are larger than normal int type. now is the second file:
     > $ file rand2 
     > rand2: ELF 64-bit LSB shared object, x86-64, version 1 (SYSV), dynamically linked (uses shared libs), for GNU/Linux 3.2.0, BuildID[sha1]=0208fc60863053462fb733436cef1ed23cb6c78f, not stripped
 1. So this is a program, lets run it:
-    > $ ./rand2 
-    > Travel coordinator
-    > 0: AC+79 3888 - 57438321590240, 114290076712336
-    > 1: Pliamas Sos - 96923321152724, 271998167812844
-    > 2: Ophiuchus - 158988959213809, 269398935090600
-    > 3: Pax Memor -ne4456 Hi Pro - 244197498304474, 134831759107042
-    > 4: Camion Gyrin - 123289552018797, 41279326116580
-    > 5: CTF - <REDACTED>
-    > Enter your destination's x coordinate:
-    > \>>> 2
-    > Enter your destination's y coordinate:
-    > \>>> 3
-    > Arrived somewhere, but not where the flag is. Sorry, try again.
+    ```console
+    $ ./rand2 
+    Travel coordinator
+    0: AC+79 3888 - 57438321590240, 114290076712336
+    1: Pliamas Sos - 96923321152724, 271998167812844
+    2: Ophiuchus - 158988959213809, 269398935090600
+    3: Pax Memor -ne4456 Hi Pro - 244197498304474, 134831759107042
+    4: Camion Gyrin - 123289552018797, 41279326116580
+    5: CTF - <REDACTED>
+    Enter your destination's x coordinate:
+    >>> 2
+    Enter your destination's y coordinate:
+    >>> 3
+    Arrived somewhere, but not where the flag is. Sorry, try again.
+    ```
 1. Seems we have to get the coordinate in order to find our flag. there are multiple ways to try but I tried to open it using Ghidra, a reverse engineering tool. It helps me to view the program in Assembly level and I can understand how it works. But things turns out to be very simple actually.
     ![Ghidra view](./images/GoogleCTF/beginner_quest/img1.png)
 1. We could locate the main function using the symbol tree. One good thing about Ghidra is that it trys to rebuild the program source code. I was wondering whether to dig into the assembly language, but instead the string that stores the flag is alreadly staring at me in the decompiled source code panel. So I could just browse the string and found the flag. Yes!
@@ -43,12 +45,14 @@ The Beginner Quest is basically capturing many flags in many areas. I like the c
 #### Steps
 1. unpack the packet, we will see there is again two files, one pdf one ELF program. Opening the PDF, we see more description text that ask us to run the program, and a poorly edited picture.
 1. running the program, it is:
-    > $ ./init_sat 
-    > Hello Operator. Ready to connect to a satellite?
-    > Enter the name of the satellite to connect to or 'exit' to quit
-    > 12
-    > Unrecognized satellite: 12
-    > Enter the name of the satellite to connect to or 'exit' to quit
+    ```console
+    $ ./init_sat 
+    Hello Operator. Ready to connect to a satellite?
+    Enter the name of the satellite to connect to or 'exit' to quit
+    12
+    Unrecognized satellite: 12
+    Enter the name of the satellite to connect to or 'exit' to quit
+    ```
 1. seems we have to find the name of the satellite then. Opening Ghidra again to see if we have any luck. But unfortunately this time the assembly is too low level and divided so I cannot analysis it. It is been a while that I find out the name of the satellite is "Osmium" according to the storyline (Yes I skipped the story actually). It is tricky that only "osmium" is allowed (No Caps, no space/'s's).
     ```console
     Enter the name of the satellite to connect to or 'exit' to quit
@@ -93,23 +97,33 @@ The Beginner Quest is basically capturing many flags in many areas. I like the c
 #### Steps
 1. This time the task comes with two files, 'note.txt' and 'family.ntfs'. The notes is telling me to change file to .dmg if i was using a mac. After searching, the .ntfs file is actually a partition file. 
 1. Then I have to analyze the ntfs file. After searching I find that we can open the file by mounting the file to file system, and it shold work properly:
+    ```console
     > $ cd /mnt
     > $ sudo mkdir family
     > $ sudo mount %PATH_TO_FILE%/family.ntfs /mnt/family
+    ```
 1. We can then see it is a windows system in it. Many files exist there but the file we want is inside '/Users/family/documents' that called credential.txt, as all other files having 0 file size. 
-    > $ cat credentials.txt 
-    > I keep pictures of my credentials in extended attributes.
+    ```console
+    $ cat credentials.txt 
+    I keep pictures of my credentials in extended attributes.
+    ```
 1. ok so now u store credential in a credential file but more tricky. Seems there is nothing to see in the properties in GUI. Another search brings me to the getfattr command:
-    > $ getfattr credentials.txt 
-    > # file: credentials.txt
-    > user.FILE0
+    ```console
+    $ getfattr credentials.txt 
+    # file: credentials.txt
+    user.FILE0
+    ```
 1. the command shows that there is an attribute called 'user.FILE0'. So I tried again to pull it out:
-    > $ getfattr credentials.txt -n user.FILE0
-    > # file: credentials.txt
-    > user.FILE0=0siVBORw0KGgoAAAANSUhEUgAABNIAA.....
+    ```console
+    $ getfattr credentials.txt -n user.FILE0
+    # file: credentials.txt
+    user.FILE0=0siVBORw0KGgoAAAANSUhEUgAABNIAA.....
+    ```
 1. here we find the picture as stated in the 'I keep **pictures** of my credentials in extended attributes.' so lets dump it into the file:
-    > $ getfattr -n user.FILE0 --only-values credentials.txt > img
-    > $ display img 
+    ```console
+    $ getfattr -n user.FILE0 --only-values credentials.txt > img
+    $ display img 
+    ```
 1. Then we can find the flag!
 
 
