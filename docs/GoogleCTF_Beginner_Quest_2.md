@@ -1,6 +1,6 @@
 # GoogleCTF
 ## 2019 - Beginner Quest (Part 2)
-[lint to Part 1](./GoogleCTF_Beginner_Quest.html)
+[link to Part 1](./GoogleCTF_Beginner_Quest.html)
 
 ### Day 2 - Work Computer (sandbox)
 #### Steps
