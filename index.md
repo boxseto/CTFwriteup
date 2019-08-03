@@ -12,6 +12,7 @@ A noob basically, who have just realised and yet immediately fallen in love with
 ## Hack The Box
 1. [Easy - Google CTF 2019 - Beginner Quest (Part 1)](./docs/GoogleCTF_Beginner_Quest.html)
 1. [Easy - Google CTF 2019 - Beginner Quest (Part 2)](./docs/GoogleCTF_Beginner_Quest_2.html)
+1. [Easy - Google CTF 2019 - Beginner Quest (Part 3)](./docs/GoogleCTF_Beginner_Quest_3.html)
 
 # Remarks
 Please tell me if you found anything inapporate or violating some rules. I will put them down upon request.
